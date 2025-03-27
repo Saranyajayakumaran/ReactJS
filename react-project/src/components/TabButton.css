@@ -1,0 +1,8 @@
+#examples li{
+    list-style: none;
+    justify-content : center;
+    display:inline-block;
+    margin:20px;
+    flex-direction:column-reverse;
+    padding:0;
+}

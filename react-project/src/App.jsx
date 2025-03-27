@@ -1,26 +1,9 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { CORE_CONCEPTS } from './data.js'
+import Header from './components/Header.jsx'
+import CoreConcept from './components/CoreConcept.jsx'
 import './App.css'
-
-const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
-
-function genRandomInt(max){
-  return Math.floor(Math.random() * (max+1));
-}
-
-function Header(){
-  return(
-    <header>
-      <img src={reactLogo}  alt="React Logo" />
-      <img src={viteLogo} alt="Vite Logo" />
-      <h1>React Essentials</h1>
-      <p>
-        {reactDescriptions[genRandomInt(2)]} React concept you will need for almost any app you are going to build!
-      </p>
-    </header>
-  );
-}
+import TabButton from './components/TabButton.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,17 +11,30 @@ function App() {
   return (
     <>
       <Header />
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <main>
+        <section id="core-concepts">
+          <h2>Core Concepts</h2>
+          <ul>
+            <CoreConcept
+            title = {CORE_CONCEPTS[0].title}
+            description= {CORE_CONCEPTS[0].description}
+            image={CORE_CONCEPTS[0].image}
+            />
+            <CoreConcept {...CORE_CONCEPTS[1]}/>
+            <CoreConcept {...CORE_CONCEPTS[2]} />
+            <CoreConcept {...CORE_CONCEPTS[3]} />
+          </ul>
+        </section>
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+            <TabButton>Components</TabButton>
+            <TabButton>JSX</TabButton>
+            <TabButton>Props</TabButton>
+            <TabButton>State</TabButton>
+          </menu>
+        </section>
+      </main>
     </>
   )
 }
