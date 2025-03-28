@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Component, useState } from 'react'
 import { CORE_CONCEPTS } from './data.js'
 import Header from './components/Header.jsx'
 import CoreConcept from './components/CoreConcept.jsx'
@@ -6,10 +6,13 @@ import './App.css'
 import TabButton from './components/TabButton.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  function handleSelect(selectedButton){
+    console.log(selectedButton);
+  }
 
   return (
-    <>
+    <div>
       <Header />
       <main>
         <section id="core-concepts">
@@ -28,14 +31,15 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton>Components</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton onSelect={()=>handleSelect('Components')}>Components</TabButton>
+            <TabButton onSelect={()=>handleSelect('jsx')}>JSX</TabButton>
+            <TabButton onSelect={()=>handleSelect('props')}>Props</TabButton>
+            <TabButton onSelect={()=>handleSelect('state')}>State</TabButton>
           </menu>
+          Dynamic Content
         </section>
       </main>
-    </>
+    </div>
   )
 }
 
